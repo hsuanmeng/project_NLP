@@ -6,6 +6,7 @@ from gensim.utils import simple_preprocess
 import gensim.corpora as corpora
 from gensim.models import CoherenceModel
 from datetime import datetime
+from .common import ModelCommonUse
 
 def Run(filename):
     data_path = "/home/csi/project_NLP/data/"
@@ -112,5 +113,6 @@ def Run(filename):
     final_df = mapping_other_df.join(df_result.set_index(["內容"]), on=["內容"])
     # put Out of Intent json file path below
     # OOI_path = 
-    final_df.to_json("./data/ouput/Out_of_Intent" + timestamp + ".json", orient='records', force_ascii=False)
-    return final_df.to_json(orient='records', force_ascii=False)
+    final_df.to_csv("./data/ouput/Out_of_Intent" + timestamp + ".json", encoding="utf-8-sig", index=False)
+    result = ModelCommonUse().outputjson(final_df, "Dominant_Topic")
+    return result
