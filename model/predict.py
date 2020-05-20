@@ -100,7 +100,7 @@ def Run(filename):
   Pred_Data.drop_duplicates(subset="Content", inplace=True)
   final_df = need_pred_df.join(Pred_Data.set_index(["內容","意圖"]), on=["內容","意圖"])
 
-  final_df.to_csv("./data/ouput/Intent_Pred"+str(timestamp)+".json", encoding="utf-8-sig", index=False)
+  final_df.to_csv("./data/ouput/Intent_Pred"+str(timestamp)+".csv", encoding="utf-8-sig", index=False)
   result = ModelCommonUse().outputjson(final_df, "意圖")
   return result
 

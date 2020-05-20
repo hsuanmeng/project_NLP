@@ -113,6 +113,6 @@ def Run(filename):
     final_df = mapping_other_df.join(df_result.set_index(["內容"]), on=["內容"])
     # put Out of Intent json file path below
     # OOI_path = 
-    final_df.to_csv("./data/ouput/Out_of_Intent" + timestamp + ".json", encoding="utf-8-sig", index=False)
+    final_df.to_csv("./data/ouput/Out_of_Intent" + str(timestamp) + ".csv", encoding="utf-8-sig", index=False)
     result = ModelCommonUse().outputjson(final_df, "Dominant_Topic")
     return result
