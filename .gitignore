@@ -1,0 +1,3 @@
+# project_NLP/.gitignore
+*.pyc
+__pycache__

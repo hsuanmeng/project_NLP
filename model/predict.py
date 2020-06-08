@@ -101,7 +101,7 @@ def Run(filename):
   final_df = need_pred_df.join(Pred_Data.set_index(["內容","意圖"]), on=["內容","意圖"])
 
   final_df.to_csv("./data/ouput/Intent_Pred"+str(timestamp)+".csv", encoding="utf-8-sig", index=False)
-  result = ModelCommonUse().outputjson(final_df, "意圖")
+  result = ModelCommonUse().outputjson(final_df, "意圖", filepath)
   return result
 
 

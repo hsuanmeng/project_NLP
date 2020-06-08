@@ -140,24 +140,7 @@ class ModelCommonUse():
 
         return model_fn
     
-    def outputjson(self, final_df, cat_name):
-        test_df = final_df.copy()
-        table1 = {}
-        statified_df = test_df[test_df["動作"]=="打分"]
-        yes = 0; soso = 0; no = 0
-        for user in statified_df["id"].unique():
-            summary_df = statified_df[statified_df["id"]==user].reset_index().sort_values(by=["時間"], ascending=False)
-            if summary_df.loc[:, "內容"][0] == "滿意":
-                yes += 1
-            elif summary_df.loc[:, "內容"][0] == "不滿意":
-                no += 1
-            elif summary_df.loc[:, "內容"][0] == "普通":
-                soso += 1
-
-        table1["滿意"]=yes
-        table1["不滿意"]=no
-        table1["普通"]=soso
-
+    def outputjson(self, final_df, cat_name, filepath):
         table2 = {}
         Intent_df = pd.DataFrame(final_df[cat_name].value_counts())
         if Intent_df.index.is_floating():
@@ -168,6 +151,6 @@ class ModelCommonUse():
             table2[str(index)] = int(Intent_df.loc[index, cat_name])
 
         table3 = {}
-        table3["滿意度"]=table1
-        table3["分群"]=table2
+        table3["路徑"] = filepath
+        table3["分類"] = table2
         return json.dumps(table3, ensure_ascii=False)
