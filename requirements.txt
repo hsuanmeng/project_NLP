@@ -29,7 +29,7 @@ en-core-web-sm-mirror==2.2.5
 entrypoints==0.3
 erlastic==2.0.0
 et-xmlfile==1.0.1
-fastapi==0.54.1
+fastapi==0.65.2
 Flask==1.1.2
 funcy==1.14
 future==0.18.2
